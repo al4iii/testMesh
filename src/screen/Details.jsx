@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text, ActivityIndicator, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
 import {useGetDriverDetails} from '../hooks/useGetDriverDetails';
-import Error from './Error';
+import Error from '../components/Error';
+import CustomActivityIndicator from '../components/CustomActivityIndicator';
 
 const Details = React.memo(({route}) => {
   const {id} = route.params;
@@ -12,7 +13,7 @@ const Details = React.memo(({route}) => {
   React.useEffect(() => {
     fetch(id);
   }, [id]);
-  
+
   return (
     <View style={styles.container}>
       {status === 'Success' && driverDetails ? (
@@ -34,8 +35,10 @@ const Details = React.memo(({route}) => {
           </Text>
           <Text style={styles.text}>{`Link : ${driverDetails[0]?.url}`}</Text>
         </View>
-      ) : status === 'Failure' ? <Error/> :  (
-        <ActivityIndicator size="large" />
+      ) : status === 'Failure' ? (
+        <Error />
+      ) : (
+        <CustomActivityIndicator />
       )}
     </View>
   );
@@ -50,5 +53,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
   },
-  text: {margin: 6, fontSize: 16},
+  text: {
+    margin: 6,
+    fontSize: 16,
+  },
 });

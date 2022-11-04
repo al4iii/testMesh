@@ -21,6 +21,5 @@ export const useGetDrivers = () => {
       page: page,
     });
   });
-
   return {fetch, status};
 };

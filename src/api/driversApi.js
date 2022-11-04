@@ -1,8 +1,7 @@
 import {useDispatch} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import { API_URL } from '../constants/api';
 import {callAPI} from '../lib/axiosAPI';
-
-const API_URL = 'http://ergast.com/api/f1/';
 
 const getDrivers = args => {
   return callAPI({

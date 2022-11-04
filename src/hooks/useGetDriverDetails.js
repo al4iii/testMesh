@@ -1,5 +1,5 @@
 import React from 'react';
-import {driversApi} from '../api/driversApi';
+import { driversApi } from '../api/driversApi';
 import {APIStatus} from '../lib/axiosAPI';
 import {driversActionCreators} from '../slices/driversSlice';
 
@@ -21,6 +21,5 @@ export const useGetDriverDetails = () => {
       driverId: driverId,
     });
   });
-
   return {fetch, status};
 };
